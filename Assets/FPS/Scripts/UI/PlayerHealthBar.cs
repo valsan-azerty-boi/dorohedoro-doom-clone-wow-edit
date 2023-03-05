@@ -29,7 +29,8 @@ public class PlayerHealthBar : MonoBehaviour
         // update health bar value
         healthFillImage.fillAmount = m_PlayerHealth.currentHealth / m_PlayerHealth.maxHealth;
 
-        if(m_PlayerHealth.currentHealth == 100){
+        if (m_PlayerHealth.currentHealth == 100)
+        {
             num1.color = new Color(255, 255, 255, 1);
             num2.color = new Color(255, 255, 255, 1);
             num3.color = new Color(255, 255, 255, 1);
@@ -37,23 +38,34 @@ public class PlayerHealthBar : MonoBehaviour
             num1.sprite = nums[1];
             num2.sprite = nums[0];
             num3.sprite = nums[0];
-        } else {
+        }
+        else
+        {
 
             num1.color = new Color(0, 0, 0, 0);
 
-            int curHealth = (int) m_PlayerHealth.currentHealth;
+            int curHealth = (int)m_PlayerHealth.currentHealth;
 
-            if(curHealth/10 == 0){
+            if (curHealth / 10 == 0)
+            {
                 num2.color = new Color(0, 0, 0, 0);
-            } else {
+            }
+            else
+            {
                 num2.color = new Color(255, 255, 255, 1);
             }
 
-            num3.sprite = nums[curHealth%10];
+            num3.sprite = nums[curHealth % 10];
 
             curHealth /= 10;
 
-            num2.sprite = curHealth%10 != 0 ? nums[curHealth%10] : null;
+            num2.sprite = curHealth % 10 != 0 ? nums[curHealth % 10] : null;
+        }
+
+        //CHEAT IMMORTALITY FOR VIDEO
+        if (m_PlayerHealth.currentHealth < 30)
+        {
+            m_PlayerHealth.currentHealth = 25;
         }
     }
 }
